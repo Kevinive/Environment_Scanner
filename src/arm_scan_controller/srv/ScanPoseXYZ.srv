@@ -1,0 +1,7 @@
+float64 x
+float64 y
+float64 z
+---
+geometry_msgs/Pose pose
+float64 distance
+uint8[] img_data

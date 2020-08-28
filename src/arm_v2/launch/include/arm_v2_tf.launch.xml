@@ -1,0 +1,6 @@
+<launch>
+    <node pkg="tf" type="static_transform_publisher" name="base_link2base_footprint" args="0 0 0 0 0 0 /base_link /base_footprint 10"/>
+    <node pkg="tf" type="static_transform_publisher" name="pitch_arm2laser" args=" -0.0022636 0.0089688 0.17 1.818 -1.5708 0 /pitch_arm /laser_sensor 10"/>
+    <node pkg="tf" type="static_transform_publisher" name="pitch_arm2camera" args="0.0036707 -0.014544 0.17 1.8204 -1.5708 0 /pitch_arm /camera 10"/>
+		<node pkg="tf" type="static_transform_publisher" name="bed_link2base_link" args="0 0 0.05 0 0 0 /bed_link /base_link 10"/>
+</launch>

@@ -1,0 +1,19 @@
+arm_v2: 
+  # Publish all joint states----------------------------- 
+  joint_state_controller: 
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+  # Position Controllers--------------------------------- 
+  yaw_joint_controller: 
+    type: position_controllers/JointPositionController 
+    joint: yaw_joint 
+    pid: {p: 10.0, i: 0.1, d: 10.0}
+  pitch_joint_controller: 
+    type: position_controllers/JointPositionController 
+    joint: pitch_joint 
+    pid: {p: 10.0, i: 0.1, d: 10.0}
+    
+  gazebo_ros_control: 
+    pid_gains: 
+      yaw_joint: {p: 5.0, i: 0.1, d: 0.5}
+      pitch_joint: {p: 5.0, i: 0.1, d: 0.5} 

@@ -1,0 +1,40 @@
+<launch>
+  
+  <include file="$(find gazebo_ros)/launch/willowgarage_world.launch"/>
+  
+  <include file="$(find arm_v2)/launch/include/arm_v2_tf.launch.xml" />
+  
+  <param
+    name="robot_description"
+    textfile="$(find arm_v2)/urdf/arm_v2.urdf" />
+    
+  <rosparam file="$(find arm_v2)/config/arm_v2_gazebo_control.yaml" command="load"/>
+	<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+		output="screen" ns="/arm_v2" args="joint_state_controller
+                                       yaw_joint_controller
+                                       pitch_joint_controller"/>
+                                       
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+    respawn="false" output="screen">
+    <remap from="/joint_states" to="/arm_v2/joint_states" />
+  </node>
+  
+  <node
+    name="spawn_model"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find arm_v2)/urdf/arm_v2.urdf -urdf -model arm_v2"
+    output="screen" />
+    
+  <node
+    name="fake_joint_calibration"
+    pkg="rostopic"
+    type="rostopic"
+    args="pub /calibrated std_msgs/Bool true" />
+    
+	<node
+		name="rviz"
+		pkg="rviz"
+		type="rviz"
+		args="-d $(find arm_v2)/rviz/arm_v2_preview.rviz" />
+</launch>

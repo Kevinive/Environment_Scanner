@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="arm_v2">
+  <link
+    name="bed_link">
+    <inertial>
+      <origin
+        xyz="0 0 0.005"
+        rpy="0 0 0" />
+      <mass
+        value="30" />
+      <inertia
+        ixx="0.75"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="0.75"
+        iyz="0.0"
+        izz="1.5" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0.005"
+        rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.01" radius="1"/>
+      </geometry>
+      <material name="black">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0.005"
+        rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.01" radius="1"/>
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.00026487 -3.4694E-18 0.048236"
+        rpy="0 0 0" />
+      <mass
+        value="0.16687" />
+      <inertia
+        ixx="0.00016933"
+        ixy="-9.648E-22"
+        ixz="1.911E-06"
+        iyy="0.00017044"
+        iyz="-2.9511E-21"
+        izz="4.4833E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://arm_v2/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://arm_v2/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="base_link_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0.01"
+      rpy="0 0 0" />
+    <parent
+      link="bed_link" />
+    <child
+      link="base_link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="yaw_arm">
+    <inertial>
+      <origin
+        xyz="-0.00068269 7.6959E-05 0.073111"
+        rpy="0 0 0" />
+      <mass
+        value="0.22991" />
+      <inertia
+        ixx="0.00041715"
+        ixy="3.0856E-07"
+        ixz="-1.8368E-06"
+        iyy="0.00041793"
+        iyz="1.2451E-06"
+        izz="0.00018043" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://arm_v2/meshes/yaw_arm.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://arm_v2/meshes/yaw_arm.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="yaw_joint"
+    type="continuous">
+    <origin
+      xyz="0 0 0.129"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="yaw_arm" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.141"
+      upper="3.141"
+      effort="100"
+      velocity="1.5" />
+  </joint>
+  <link
+    name="pitch_arm">
+    <inertial>
+      <origin
+        xyz="-0.0032342 -0.0056143 0.10098"
+        rpy="0 0 0" />
+      <mass
+        value="0.13457" />
+      <inertia
+        ixx="0.00029792"
+        ixy="-1.3158E-06"
+        ixz="-4.6406E-05"
+        iyy="0.0003147"
+        iyz="-5.1548E-07"
+        izz="7.6539E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://arm_v2/meshes/pitch_arm.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://arm_v2/meshes/pitch_arm.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="pitch_joint"
+    type="continuous">
+    <origin
+      xyz="0 0 0.1465"
+      rpy="-0.0060785 -0.0015341 2.892" />
+    <parent
+      link="yaw_arm" />
+    <child
+      link="pitch_arm" />
+    <axis
+      xyz="-0.9696 -0.24471 0" />
+    <limit
+      lower="-2.356"
+      upper="2.356"
+      effort="100"
+      velocity="1.5" />
+  </joint>
+  <link
+    name="laser_sensor">
+    <inertial>
+      <origin
+        xyz="-0.020766 -0.00032327 -0.00062907"
+        rpy="0 0 0" />
+      <mass
+        value="0.023908" />
+      <inertia
+        ixx="3.1326E-06"
+        ixy="-1.1637E-07"
+        ixz="-1.6438E-07"
+        iyy="3.6937E-06"
+        iyz="3.9003E-08"
+        izz="5.6413E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://arm_v2/meshes/laser_sensor.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://arm_v2/meshes/laser_sensor.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="laser_joint"
+    type="fixed">
+    <origin
+      xyz="-0.0022636 0.0089688 0.17"
+      rpy="1.818 -1.5708 0" />
+    <parent
+      link="pitch_arm" />
+    <child
+      link="laser_sensor" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="camera">
+    <inertial>
+      <origin
+        xyz="-0.039 -3.4694E-16 -9.4629E-16"
+        rpy="0 0 0" />
+      <mass
+        value="0.024504" />
+      <inertia
+        ixx="1.2252E-06"
+        ixy="-3.4249E-21"
+        ixz="1.4163E-20"
+        iyy="1.3036E-05"
+        iyz="-3.3008E-24"
+        izz="1.3036E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://arm_v2/meshes/camera.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://arm_v2/meshes/camera.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="camera_joint"
+    type="fixed">
+    <origin
+      xyz="0.0036707 -0.014544 0.17"
+      rpy="1.8204 -1.5708 0" />
+    <parent
+      link="pitch_arm" />
+    <child
+      link="camera" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  
+  <!-- Gazebo Specified Parameters (Color, Gravity, Fraction etc.)-->
+  <gazebo reference="bed_link">
+  	<material>Gazebo/DarkGrey</material>
+  	<mu1>0.3</mu1>
+  	<mu2>0.3</mu2>
+  </gazebo>
+  <gazebo reference="base_link">
+  	<material>Gazebo/DarkGrey</material>
+  	<mu1>0.3</mu1>
+  	<mu2>0.3</mu2>
+  </gazebo>
+  <gazebo reference="yaw_arm">
+  	<material>Gazebo/Grey</material>
+  </gazebo>
+  <gazebo reference="pitch_arm">
+  	<material>Gazebo/Grey</material>
+  </gazebo>
+  <gazebo reference="laser_sensor">
+  	<material>Gazebo/Black</material>
+  </gazebo>
+  <gazebo reference="camera">
+  	<material>Gazebo/Black</material>
+  </gazebo>
+  
+  
+  <!-- Define Transmission Relationships -->
+  <transmission name="yaw_joint_trans">
+  	<type>transmission_interface/SimpleTransmission</type>
+  	<joint name="yaw_joint">
+  		<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+  	</joint>
+  	<actuator name="yaw_joint_Motor">
+  		<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+  		<mechanicalReduction>1</mechanicalReduction>
+  	</actuator>
+  </transmission>
+  
+  <transmission name="pitch_joint_trans">
+  	<type>transmission_interface/SimpleTransmission</type>
+  	<joint name="pitch_joint">
+  		<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+  	</joint>
+  	<actuator name="pitch_joint_Motor">
+  		<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+  		<mechanicalReduction>1</mechanicalReduction>
+  	</actuator>
+  </transmission>
+  
+	<gazebo>
+		<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+			<robotNamespace>/arm_v2</robotNamespace>
+			<robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+		</plugin>
+	</gazebo>
+  
+  <!-- Define Sensors -->
+	<gazebo reference="camera">
+		<sensor type="camera" name="camera_node">
+			<update_rate>30.0</update_rate>
+			<camera name="head">
+				<horizontal_fov>1.7453</horizontal_fov>
+				<image>
+					<width>1280</width>
+					<height>720</height>
+					<format>R8G8B8</format>
+				</image>
+				<clip>
+					<near>0.02</near>
+					<far>300</far>
+				</clip>
+				<noise>
+					<type>gaussian</type>
+					<mean>0.0</mean>
+					<stddev>0.007</stddev>
+				</noise>
+			</camera>
+			<plugin name="gazebo_camera" filename="libgazebo_ros_camera.so">
+				<alwaysOn>true</alwaysOn>
+				<updateRate>0.0</updateRate>
+				<cameraName>/camera</cameraName>
+				<imageTopicName>image_raw</imageTopicName>
+				<cameraInfoTopicName>camera_info</cameraInfoTopicName>
+				<frameName>camera_link</frameName>
+				<hackBaseline>0.07</hackBaseline>
+				<distortionK1>0.0</distortionK1>
+				<distortionK2>0.0</distortionK2>
+				<distortionK3>0.0</distortionK3>
+				<distortionT1>0.0</distortionT1>
+				<distortionT2>0.0</distortionT2>
+			</plugin>
+		</sensor>
+	</gazebo>
+	
+	<gazebo reference="laser_sensor">
+		<sensor type="ray" name="blocklidar">
+			<pose>0 0 0 0 0 0</pose>
+			<visualize>false</visualize>
+			<update_rate>20</update_rate>
+			<always_on>true</always_on>
+			<ray>
+				<scan display="true">
+					<horizontal>
+						<samples>9</samples>
+						<resolution>1.0</resolution>
+						<min_angle>-0.1</min_angle>
+						<max_angle>0.1</max_angle>
+					</horizontal>
+					<vertical>
+						<samples>9</samples>
+						<resolution>1.0</resolution>
+						<min_angle>-0.1</min_angle>
+						<max_angle>0.1</max_angle>
+					</vertical>
+				</scan>
+				<range>
+					<min>0.05</min>
+					<max>80.0</max>
+				</range>
+			</ray>
+			<plugin name="gazebo_blocklidar" filename="libgazebo_ros_block_laser.so">
+				<topicName>/blocklaser_scan</topicName>
+				<frameName>laser_sensor</frameName>
+				<gaussianNoise>0.01</gaussianNoise>
+				<alwaysOn>true</alwaysOn>
+				<updateRate>20</updateRate>
+			</plugin>
+		</sensor>
+		
+		<!--gravity>true</gravity>
+		<sensor name="imu_sensor" type="imu">
+			<pose>0 0 0 0 0 0</pose>
+			<visualize>false</visualize>
+			<update_rate>100</update_rate>
+			<always_on>true</always_on>
+			<topic>imu</topic>
+			<plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+				<topicName>imu</topicName>
+				<bodyName>laser_sensor</bodyName>
+				<updateRateHZ>100</updateRateHZ>
+				<gaussianNoise>0.01</gaussianNoise>
+				<xyzOffset>0 0 0</xyzOffset>
+				<rpyOffset>0 0 0</rpyOffset>
+				<frameName>laser_sensor</frameName>
+			</plugin>
+		</sensor-->
+	</gazebo>
+  
+</robot>

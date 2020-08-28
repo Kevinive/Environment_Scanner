@@ -1,0 +1,8 @@
+<launch>
+  
+  <node
+		name="rviz"
+		pkg="rviz"
+		type="rviz"
+		args="-d $(find arm_v2)/rviz/arm_v2_preview.rviz" />
+</launch>

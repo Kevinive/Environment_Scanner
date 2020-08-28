@@ -1,0 +1,9 @@
+Header header
+float64 lidarData
+geometry_msgs/Pose pose
+uint32 img_height
+uint32 img_width
+string img_encoding
+uint8 img_is_bigendian
+uint32 img_step
+uint8[] img_data

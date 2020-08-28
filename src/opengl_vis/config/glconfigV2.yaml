@@ -1,0 +1,15 @@
+%YAML:1.0
+
+window_width: 1600
+window_height: 1200
+
+camera.origX: 0.0
+camera.origY: 0.0
+camera.origZ: 2.0
+
+vsprofile: /home/kevin/catkin_workspace/src/opengl_vis/shader_config/pointcloud_texture_shader.vs
+fsprofile: /home/kevin/catkin_workspace/src/opengl_vis/shader_config/pointcloud_texture_shader.fs
+
+# data
+# the tum dataset directory, change it to yours!
+info_dir: /home/kevin/catkin_workspace/src/env_rebuilder/result/GL/info.texture

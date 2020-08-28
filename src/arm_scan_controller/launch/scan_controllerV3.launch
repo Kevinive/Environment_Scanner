@@ -1,0 +1,19 @@
+<launch>
+  <!--arg name="paused" default="false"/-->
+  
+  <!--include file="$(find arm_v2)/launch/include/arm_v2_tf.launch.xml" /-->
+  
+  <node
+    name="pose_estimator_node"
+    pkg="pose_estimator"
+    type="pose_estimator_node"
+    output="screen" />
+    
+  <node
+    name="scan_controllerV3_node"
+    pkg="arm_scan_controller"
+    type="scan_controllerV3_node"
+    oubput="screen" />
+
+	
+</launch>
